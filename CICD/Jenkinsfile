@@ -1,0 +1,26 @@
+pipeline{
+    agent any
+    stages{
+        stage('version-ctrl'){
+            steps{
+                 git branch: 'webapp', url: 'https://github.com/devsecopsmurali/Java_Web_App.git'
+            }
+        }
+         stage('Build-clean') { 
+            steps {
+                sh 'mvn clean' 
+            }
+        }
+         stage('Build-Install') { 
+            steps {
+                sh 'mvn install' 
+            }
+        }
+         stage('Build') { 
+            steps {
+                sh 'mvn -B -DskipTests  package' 
+            }
+        }
+    }
+}
+
