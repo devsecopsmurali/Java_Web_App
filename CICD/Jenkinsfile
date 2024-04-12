@@ -8,12 +8,18 @@ pipeline{
         }
          stage('Build-clean') { 
             steps {
-                sh 'mvn -B  clean' 
+                sh 'mvn -B clean' 
             }
         }
         stage('Build-install') { 
             steps {
-                sh 'mvn -B -DskipTests install package' 
+                sh 'mvn install' 
+            }
+        }
+
+        stage('Build-package') { 
+            steps {
+                sh 'mvn -B -DskipTests  package' 
             }
         }
        
