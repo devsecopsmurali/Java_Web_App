@@ -13,6 +13,7 @@ public class ContactController {
 	@RequestMapping(value = "/addContact", method = RequestMethod.POST)
 	public String addContact(@ModelAttribute("contact")	Contact contact, BindingResult result) {
 		//write the code here to add contact
+		System.out.println("hello")
 		return "redirect:contact.html";
 	}
 	
