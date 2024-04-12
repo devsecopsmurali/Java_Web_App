@@ -73,8 +73,21 @@
    <maven.compiler.source>16</maven.compiler.source>
    <maven.compiler.target>16</maven.compiler.target>
  </properties>
+
+ <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-war-plugin</artifactId>
+                <version>3.3.2</version><!-- Use the appropriate version -->
+                <configuration>
+                    <!-- Configure plugin options here -->
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
  
-  <build>
+ <!-- <build>
     <finalName>Nch-tiles</finalName>
-  </build>
+  </build>-->
 </project>
