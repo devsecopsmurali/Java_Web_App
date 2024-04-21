@@ -5,7 +5,7 @@
     <artifactId>mylibs</artifactId>
     <packaging>war</packaging>
     <version>v2</version>
-    <name>Visualpathit mylibs Webapp</name>
+    <name>mylibs Webapp</name>
     <url>http://maven.apache.org</url>
     <properties>
         <spring.version>4.2.0.RELEASE</spring.version>
