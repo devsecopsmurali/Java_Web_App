@@ -10,7 +10,7 @@ pipeline{
         NEXUS_VERSION = "nexus3"
         NEXUS_PROTOCOL = "http"
         NEXUSPORT="8081"
-        NEXUSIP = "100.26.121.112"
+        NEXUSIP = "18.234.106.112"
        //NEXUS_CREDENTIAL_ID = "nexuslogin"
         ARTVERSION = "${env.BUILD_ID}"
     }
