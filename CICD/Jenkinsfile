@@ -11,8 +11,7 @@ pipeline{
         NEXUS_PROTOCOL = "http"
         NEXUSPORT="8081"
         NEXUSIP = "18.234.106.112"
-       //NEXUS_CREDENTIAL_ID = "nexuslogin"
-        ARTVERSION = "${env.BUILD_ID}"
+      ARTVERSION = "${env.BUILD_ID}"
     }
 
     stages{
