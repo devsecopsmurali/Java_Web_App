@@ -10,8 +10,10 @@ pipeline{
         NEXUS_VERSION = "nexus3"
         NEXUS_PROTOCOL = "http"
         NEXUSPORT="8081"
-        NEXUSIP = "18.234.106.112"
-      ARTVERSION = "${env.BUILD_ID}"
+        NEXUSIP = "52.73.31.118"
+        ARTVERSION = "${env.BUILD_ID}"
+        NEXUS_CREDENTIAL_ID ="nexus-credentials"
+	NEXUS_URL = "52.73.31.118:8081"
     }
 
     stages{
@@ -23,7 +25,7 @@ pipeline{
         
         stage('BUILD'){
             steps {
-                sh 'mvn -s settings.xml -DskipTests  clean install '
+                sh 'mvn -s settings.xml -DskipTests  clean install package'
             }
              post {
                 success {
@@ -43,13 +45,13 @@ pipeline{
                     artifactExists = fileExists artifactPath;
                     if(artifactExists) {
                         echo "*** File: ${artifactPath}, group: ${pom.groupId}, packaging: ${pom.packaging}, version ${pom.version} ARTVERSION";
-                        nexusArtifactUploader(
+		nexusArtifactUploader(
                             nexusVersion: NEXUS_VERSION,
                             protocol: NEXUS_PROTOCOL,
                             nexusUrl: NEXUS_URL,
-                            groupId: NEXUS_REPOGRP_ID,
-                            version: ARTVERSION,
-                            repository: NEXUS_REPOSITORY,
+                            groupId: pom.groupId,
+                            version: pom.version,
+                            repository: NEXUS_RELEASE_REPO,
                             credentialsId: NEXUS_CREDENTIAL_ID,
                             artifacts: [
                                 [artifactId: pom.artifactId,
