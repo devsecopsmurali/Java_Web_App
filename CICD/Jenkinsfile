@@ -36,6 +36,14 @@ pipeline{
                 }
             }
         }
+	    stage("build & SonarQube analysis") {
+            agent any
+            steps {
+              withSonarQubeEnv('SONARSERVER') {
+                sh 'mvn clean package sonar:sonar'
+              }
+            }
+          }
 
                  stage("Publish to Nexus Repository Manager") {
             steps {
