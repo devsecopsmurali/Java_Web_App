@@ -25,17 +25,17 @@ pipeline{
             }
         }
         
-        stage('BUILD'){
-            steps {
-                sh 'mvn -s settings.xml -DskipTests  clean install package'
-            }
-             post {
-                success {
-                    echo 'Now Archiving...'
-                    archiveArtifacts artifacts: '**/target/*.war'
-                }
-            }
-        }
+        // stage('BUILD'){
+        //     steps {
+        //         sh 'mvn -s settings.xml -DskipTests  clean install package'
+        //     }
+        //      post {
+        //         success {
+        //             echo 'Now Archiving...'
+        //             archiveArtifacts artifacts: '**/target/*.war'
+        //         }
+        //     }
+        // }
 	    stage("build & SonarQube analysis") {
             agent any
             steps {
